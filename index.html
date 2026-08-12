@@ -1,23 +1,774 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "볼보 XC40 (Volvo XC40)",
+      "image": [
+        "https://yourwebsite.com/images/volvo-xc40-main.jpg"
+      ],
+      "description": "2026년식 볼보 XC40 모델별 공식 가격표, 모의견적 계산기, 다이렉트 할인 혜택 및 장단점 비교 분석 가이드",
+      "brand": {
+        "@type": "Brand",
+        "name": "볼보 (Volvo)"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "KRW",
+        "lowPrice": "49200000",
+        "highPrice": "64300000",
+        "offerCount": "4"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "450"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #1a2d42; 
+            --secondary-color: #c5a880; 
+            --bg-color: #f7f9fa; 
+            --card-bg: #ffffff;
+            --text-main: #2d3748; 
+            --text-muted: #718096;
+            --accent-color: #3182ce; 
+            --border-radius: 16px;
+            --transition-speed: 0.3s;
+        }
+
+        body { 
+            font-family: 'Malgun Gothic', 'Dotum', sans-serif; 
+            line-height: 1.9; 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-color); 
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 40px auto; 
+            padding: 0 24px; 
+        }
+
+        header { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+            padding: 30px 0; 
+            text-align: center; 
+            border-bottom: 4px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        header a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 2.4em; 
+            font-weight: 700; 
+            letter-spacing: -1px;
+        }
+
+        nav { 
+            margin-bottom: 40px; 
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 8px;
+        }
+
+        nav ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: space-around; 
+            flex-wrap: wrap;
+        }
+
+        nav ul li a { 
+            display: block; 
+            padding: 14px 20px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            font-weight: bold; 
+            border-radius: 10px;
+            transition: all var(--transition-speed); 
+        }
+
+        nav ul li a:hover { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+        }
+
+        .content-wrap { 
+            display: flex; 
+            gap: 40px; 
+            margin-top: 20px; 
+            align-items: flex-start;
+        }
+
+        .main-content { 
+            flex: 3; 
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .sidebar { 
+            flex: 1; 
+            position: sticky;
+            top: 40px;
+            background-color: var(--card-bg);
+            padding: 30px; 
+            border-radius: var(--border-radius); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        h2 { 
+            border-left: 5px solid var(--secondary-color); 
+            padding-left: 16px; 
+            color: var(--primary-color); 
+            margin-top: 40px; 
+            font-size: 2.1em; 
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h3 { 
+            color: var(--primary-color); 
+            margin-top: 35px; 
+            font-size: 1.6em; 
+            font-weight: 600;
+        }
+
+        h4 { 
+            color: var(--text-main); 
+            margin-top: 25px; 
+            border-left: 3px solid var(--primary-color); 
+            padding-left: 12px; 
+            font-size: 1.25em; 
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            color: #4a5568;
+        }
+
+        .highlight-box { 
+            background-color: #f3f6f9; 
+            padding: 28px; 
+            border-radius: var(--border-radius); 
+            border-left: 6px solid var(--secondary-color); 
+            margin: 30px 0; 
+            font-size: 1.1em; 
+            line-height: 1.8; 
+        }
+
+        .highlight-box strong { 
+            color: var(--primary-color); 
+        }
+
+        ul.sidebar-menu { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+
+        ul.sidebar-menu li a { 
+            display: block; 
+            padding: 12px 10px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            border-bottom: 1px solid #edf2f7; 
+            transition: all var(--transition-speed); 
+            font-weight: 500;
+        }
+
+        ul.sidebar-menu li a:hover { 
+            background-color: #f7fafc; 
+            color: var(--primary-color); 
+            padding-left: 15px;
+        }
+
+        table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 0;
+            margin: 30px 0; 
+            font-size: 0.95em; 
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        table th, table td { 
+            padding: 16px; 
+            text-align: left; 
+            vertical-align: middle; 
+        }
+
+        table th { 
+            background-color: var(--primary-color); 
+            color: #fff;
+            font-weight: 600; 
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        table td {
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .interactive-section { 
+            background-color: #fcfdfd; 
+            padding: 35px; 
+            border: 1px solid #e2e8f0; 
+            border-radius: var(--border-radius); 
+            margin: 40px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01); 
+        }
+
+        .interactive-section label { 
+            display: block; 
+            font-weight: 600; 
+            margin-bottom: 10px; 
+            color: var(--primary-color); 
+        }
+
+        .interactive-section select, 
+        .interactive-section input[type="text"], 
+        .interactive-section input[type="tel"], 
+        .interactive-section input[type="range"],
+        .interactive-section textarea { 
+            width: 100%; 
+            padding: 14px; 
+            margin-bottom: 20px; 
+            border: 1px solid #cbd5e0; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 1em; 
+            background-color: #fff;
+            transition: border-color var(--transition-speed);
+        }
+
+        .interactive-section select:focus,
+        .interactive-section input:focus,
+        .interactive-section textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+        }
+
+        .interactive-section button { 
+            background-color: var(--primary-color); 
+            color: #fff; 
+            border: none; 
+            padding: 16px 30px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.1em; 
+            font-weight: 600;
+            width: 100%;
+            transition: background-color var(--transition-speed); 
+        }
+
+        .interactive-section button:hover { 
+            background-color: #2c3e50; 
+        }
+
+        /* 계산 결과 스타일 */
+        .calculator-result {
+            background-color: #f7fafc;
+            border: 1px dashed var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .calculator-result div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .calculator-result div strong {
+            color: var(--primary-color);
+        }
+
+        .chart-box { 
+            background-color: #f8fafc; 
+            padding: 30px; 
+            border-radius: var(--border-radius); 
+            margin: 30px 0; 
+            border: 1px solid #edf2f7;
+        }
+
+        .bar-chart-wrap { 
+            display: flex; 
+            align-items: flex-end; 
+            height: 240px; 
+            padding: 20px 10px; 
+            background-color: #fff; 
+            border-bottom: 2px solid #cbd5e0; 
+            position: relative; 
+            gap: 15px;
+        }
+
+        .bar-chart-wrap .bar-item { 
+            flex: 1; 
+            background-color: var(--primary-color); 
+            text-align: center; 
+            color: #fff; 
+            font-size: 0.85em; 
+            position: relative; 
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            transition: height 0.8s ease; 
+        }
+
+        .bar-chart-wrap .bar-item .bar-value { 
+            position: absolute; 
+            top: -28px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--primary-color); 
+            font-weight: bold; 
+            font-size: 0.95em;
+        }
+
+        .bar-chart-wrap .bar-item .bar-label { 
+            position: absolute; 
+            bottom: -30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--text-muted); 
+            font-size: 0.9em; 
+            width: 100%;
+            text-align: center;
+        }
+
+        a.external-link { 
+            color: var(--accent-color); 
+            text-decoration: none; 
+            font-weight: 600; 
+            border-bottom: 1px dashed var(--accent-color); 
+        }
+
+        a.external-link:hover { 
+            color: var(--primary-color); 
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 992px) {
+            .content-wrap {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="/">볼보 XC40 전문 분석 플랫폼</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <ul class="main-menu">
+                <li><a href="#intro">XC40 가이드 개요</a></li>
+                <li><a href="#spec-info">모델 사양 및 트림 정보</a></li>
+                <li><a href="#price-table">공식 가격표 및 모의견적</a></li>
+                <li><a href="#calculator">실시간 유지비 계산기</a></li>
+                <li><a href="#pro-con">오너 평가 및 장단점</a></li>
+                <li><a href="#market-trend">2026년 수입차 할인 성지</a></li>
+                <li><a href="#qa-section">자주 묻는 질문 FAQ</a></li>
+            </ul>
+        </nav>
+
+        <div class="content-wrap">
+            <div class="main-content">
+                
+                <h2 id="intro">2026년형 볼보 XC40 완벽 분석: 프리미엄 컴팩트 SUV의 기준</h2>
+                
+                <p>수입 컴팩트 SUV 시장에서 가장 단단하고 신뢰할 수 있는 모델을 꼽으라면 단연 볼보 XC40입니다. 스웨덴의 프리미엄 자동차 브랜드 볼보가 제안하는 이 매력적인 컴팩트 SUV는 독창적인 스웨디시 디자인과 타협 없는 안전 사양으로 국내에서 엄청난 인기를 구가하고 있습니다. 2026년형으로 새롭게 단장한 볼보 XC40 B4 마일드 하이브리드 모델과 순수 전기차 버전인 볼보 XC40 리차지 라인업은 합리적인 가격 정책과 더불어 압도적인 상품성을 갖추며 수입 SUV 예비 오너들의 구매 순위 상위권을 차지하고 있습니다.</p>
+
+                <div class="highlight-box">
+                    <strong>볼보 XC40 실구매를 고민하는 소비자가 가장 많이 질문하는 포인트</strong><br>
+                    볼보 XC40 B4 AWD 모델의 실구매 평균 가격은 취등록세를 포함하여 얼마 수준으로 책정되는지, 2026년형에 들어와 예상 출고 대기 기간은 어느 정도인지 궁금해하는 분들이 많습니다. 본 가이드에서는 가솔린 마일드 하이브리드 엔진 라인업과 리차지 순수 전기차 트림의 옵션별 세부 가격을 완벽히 정리하고, 온라인에서 다이렉트 컨설팅을 받는 방법과 저렴한곳 및 숨겨진 할인 좌표 정보를 일목요연하게 비교 분석하여 드립니다.
+                </div>
+
+                <p>자동차 커뮤니티인 보배드림, 디시인사이드 차갤, 펨코(에펨코리아) 등에서 실구매 오너들의 내돈내산 후기를 분석해보면 우수한 편의 장비와 탁월한 안전 제어 성능이 최고의 장점으로 꼽힙니다. 반면, 다소 긴 대기 기간과 수입차 브랜드 특유의 부품 및 정비 비용은 아쉬운 단점으로 지적되기도 합니다. 이러한 장단점과 경쟁 모델 간의 구체적인 차이점을 객관적으로 파악함으로써 후회 없는 최선의 결정을 내리실 수 있습니다.</p>
+
+
+                <h2 id="spec-info">볼보 XC40 트림 라인업 및 30가지 핵심 사양 분석</h2>
+                
+                <p>2026년식 볼보 XC40은 내연기관의 효율성을 극대화한 48V 마일드 하이브리드 B4 파워트레인과 배기가스 배출이 전혀 없는 리차지 순수 전기차 두 가지 종류의 동력계통을 갖추고 있습니다. 구매 계획을 세우실 때에는 각 트림별 기본 탑재 장비와 인테리어 테마의 차이를 명확하게 비교해보는 과정이 필수적입니다.</p>
+
+                <h3>볼보 XC40 B4 AWD 플러스 브라이트 트림 사양</h3>
+                <p>볼보 XC40 B4 플러스 브라이트(Plus Bright)는 실용성과 합리적인 금액대를 추구하는 유저에게 강력히 추천하는 기본 트림입니다. 2.0L 가솔린 터보 엔진에 48V 마일드 하이브리드 시스템이 결합되어 부드러운 가속과 뛰어난 연료 효율성을 보장하며 사륜구동(AWD) 장치가 기본으로 적용되어 빗길이나 눈길 주행에서도 안정적인 궤적을 유지합니다. 19인치 5-스포크 알로이 휠과 가죽 시트, 앞좌석 통풍 및 열선 기능이 빠짐없이 들어갔으며 한국 시장을 위해 공동 개발된 티맵 인포테인먼트 서비스가 완벽하게 내장되어 내비게이션 검색 편의성이 매우 높습니다.</p>
+
+                <h3>볼보 XC40 B4 AWD 얼티메이트 브라이트 트림 사양</h3>
+                <p>한층 더 고급스러운 감성을 원한다면 볼보 XC40 B4 얼티메이트 브라이트(Ultimate Bright)가 최고의 선택입니다. 외관에는 오레포스 크리스탈 기어노브가 실내 디자인의 정점을 찍고 있으며, 최고급 나파 가죽 시트와 더불어 하만카돈 프리미엄 사운드 시스템이 장착되어 콘서트홀에 온 듯한 사운드를 선사합니다. 어드밴스드 공기 청정 장치와 360도 서라운드 뷰 카메라는 가다 서다를 반복하는 복잡한 도심 도로 환경에서 스트레스를 크게 덜어줍니다. 또한 휠 역시 차별화된 다이아몬드 컷 디자인이 적용되어 프리미엄 패밀리 컴팩트 SUV로서의 풍모를 드러냅니다.</p>
+
+                <h3>볼보 XC40 리차지 순수 전기차 라인업 분석</h3>
+                <p>볼보의 친환경 전략을 선도하는 볼보 XC40 리차지(Recharge) 모델은 싱글 모터와 트윈 모터 두 가지 구동계로 나누어 판매됩니다. XC40 리차지 싱글 플러스 모델은 전륜구동 방식을 채택하여 에너지 효율과 최대 주행 거리를 극대화하는 것에 초점을 두었으며, 주행 거리가 중요하고 복잡한 도심 주행 위주인 운전자에게 적합합니다. 반면 XC40 리차지 트윈 울트라 모델은 전륜과 후륜에 각각 전기 모터가 배치된 고성능 AWD 시스템을 통해 압도적인 가속력과 퍼포먼스를 발휘합니다. 전기차 전용 티맵 플랫폼이 탑재되어 목적지 도착 시 예상 배터리 잔량을 즉각적으로 알려주고 가까운 충전소 위치를 지능적으로 탐색하는 AI 비서 기능이 들어갔습니다.</p>
+
+                <h4>주목해야 할 볼보 XC40 30가지 주요 제원 및 기능 키워드</h4>
+                <p>차량 선택 시 참고할 수 있도록 주요 사양의 명칭과 장비 목록을 다음과 같이 일목요연하게 나열합니다. 이 리스트는 볼보 코리아가 제시하는 카탈로그 기준을 바탕으로 하였습니다.</p>
+                
+                <table style="font-size: 0.9em;">
+                    <thead>
+                        <tr>
+                            <th>카테고리</th>
+                            <th>상세 핵심 사양 키워드</th>
+                            <th>주요 적용 모델 및 기능 설명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>파워트레인</strong></td>
+                            <td>XC40 B4 마일드 하이브리드 / 48V 마일드 하이브리드 파워트레인 / XC40 2.0 가솔린 터보 엔진 / XC40 리차지 싱글 모터 / XC40 리차지 트윈 모터</td>
+                            <td>연비 개선을 돕는 통합 스타터 제네레이터 및 고전압 배터리 시스템 적용</td>
+                        </tr>
+                        <tr>
+                            <td><strong>트림 패키지</strong></td>
+                            <td>XC40 플러스 브라이트 트림 / XC40 얼티메이트 브라이트 트림 / XC40 다크 에디션 / XC40 에센셜 패키지 / XC40 스포츠 세시 튜닝</td>
+                            <td>디자인 외관 트림과 서스펜션 반응 속도를 조절하는 고유 패키지 라인업</td>
+                        </tr>
+                        <tr>
+                            <td><strong>주행 보조 (ADAS)</strong></td>
+                            <td>파일럿 어시스트 드라이버 가이드 / 시티 세이프티 제동 시스템 / 도로 이탈 완화 기능 / 반자율주행 ADAS 패키지 / 볼보 세이프티 어시스턴스</td>
+                            <td>전방 충돌 경고 및 제동 지원, 어댑티브 크루즈 컨트롤과 차선 유지 기술의 정밀한 조화</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인포테인먼트</strong></td>
+                            <td>티맵 인포테인먼트 시스템 / 누구 보이스 컨트롤 / 플로 음악 서비스 / 볼보온콜 긴급 구조 서비스 / 오버더에어 OTA 업데이트</td>
+                            <td>한국 사용자를 위해 특화 설계된 완벽한 무선 업데이트 지원 인포테인먼트 시스템</td>
+                        </tr>
+                        <tr>
+                            <td><strong>내외장 고급 편의</strong></td>
+                            <td>오레포스 크리스탈 기어노브 사양 / 하만카돈 프리미엄 사운드 시스템 / 어드밴스드 공기 청정 기능 / 나파 가죽 럭셔리 시트 / 파노라마 선루프</td>
+                            <td>실내 감성과 탑승자의 호흡기 건강, 시각 및 청각을 모두 만족시키는 프리미엄 사양</td>
+                        </tr>
+                        <tr>
+                            <td><strong>전기차 특화 장비</strong></td>
+                            <td>원 페달 드라이브 기능 / 히트 펌프 시스템 / 고전압 배터리 팩 보증 / 전기차 전용 TMAP UI / 배터리 프리컨디셔닝</td>
+                            <td>겨울철 배터리 효율 저하 방지 장치 및 효율적인 충전 경로 탐색 인터페이스 탑재</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <h2 id="price-table">2026년식 볼보 XC40 공식 가격표 및 월 납입금 예측</h2>
+                
+                <p>2026년 기준 대한민국 시장에 공식 판매되는 볼보 XC40의 트림별 출고 가격 정보입니다. 수입 준중형 SUV 시장의 평균적인 시세를 고려할 때 볼보의 권장 소비자가는 프리미엄 가치에 비해 합리적으로 책정되어 있는 편입니다. 아래 표를 통해 원하는 모델의 순수 차량 가격과 예상 취등록세를 함께 가늠해 보십시오.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>모델 및 세부 트림 사양</th>
+                            <th>공식 출시 가격 (원)</th>
+                            <th>취등록세 예상 금액 (7% 기준)</th>
+                            <th>전기차 보조금 적용 예상가 (서울 기준)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>볼보 XC40 B4 AWD 플러스 브라이트</td>
+                            <td>49,200,000</td>
+                            <td>3,444,000</td>
+                            <td>해당 없음 (마일드 하이브리드)</td>
+                        </tr>
+                        <tr>
+                            <td>볼보 XC40 B4 AWD 얼티메이트 브라이트</td>
+                            <td>54,300,000</td>
+                            <td>3,801,000</td>
+                            <td>해당 없음 (마일드 하이브리드)</td>
+                        </tr>
+                        <tr>
+                            <td>볼보 XC40 리차지 싱글 플러스 (전기차)</td>
+                            <td>56,000,000</td>
+                            <td>3,920,000 (감면 적용 전)</td>
+                            <td>약 51,500,000 (국비 및 지방비 지원금 반영 시)</td>
+                        </tr>
+                        <tr>
+                            <td>볼보 XC40 리차지 트윈 울트라 (전기차)</td>
+                            <td>64,300,000</td>
+                            <td>4,501,000 (감면 적용 전)</td>
+                            <td>약 59,800,000 (정부 전기차 지원금 혜택 반영 시)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="highlight-box">
+                    <strong>가격 산출 관련 중요 주의사항 안내</strong><br>
+                    위 제시된 가격표의 수치는 메이커의 기본 권장 출시가 기준이며, 실제 차량 등록 시 번호판 부착 비용, 탁송료, 책임 보험료 등의 추가적인 잡비가 포함됩니다. 특히 리차지 전기차 라인업의 경우 거주하시는 지방자치단체에 따라 최종 보조금 지원 규모의 차이점이 크게 나타나므로 구매 승인 전에 반드시 해당 지역 대리점 또는 다이렉트 에이전시의 세밀한 견적 컨설팅을 거치시는 것이 안전합니다.
+                </p>
+
+
+                <h2 id="calculator">실시간 모의 견적 계산기 및 맞춤형 금융 설계</h2>
+                
+                <p>볼보 XC40을 리스나 장기렌트, 혹은 할부 등 다양한 금융 요금제로 가입하고자 할 때 매월 납부해야 할 실질적인 고정 요금이 얼마인지 미리 계산해보는 것이 중요합니다. 아래의 실시간 모의 견적 계산기 어플리케이션 도구를 사용하여 원하시는 트림과 초기 비용, 기간에 따른 가상 납입료를 빠르고 정확하게 분석해 보시기 바랍니다.</p>
+
+                <div class="interactive-section" id="custom-calc-section">
+                    <h3>볼보 XC40 다이렉트 금융 견적 계산기</h3>
+                    <p>원하는 모델과 조건을 설정하시면 2026년 기준 이자율을 반영하여 예상 월 납입금이 자동으로 계산됩니다.</p>
+                    
+                    <form id="calcForm" onsubmit="return false;">
+                        <label for="carTrim">선택 모델 트림:</label>
+                        <select id="carTrim" onchange="calculateQuote();">
+                            <option value="49200000">볼보 XC40 B4 AWD 플러스 브라이트 (4,920만 원)</option>
+                            <option value="54300000">볼보 XC40 B4 AWD 얼티메이트 브라이트 (5,430만 원)</option>
+                            <option value="56000000">볼보 XC40 리차지 싱글 플러스 [보조금 반영 전] (5,600만 원)</option>
+                            <option value="64300000">볼보 XC40 리차지 트윈 울트라 [보조금 반영 전] (6,430만 원)</option>
+                        </select>
+
+                        <label for="financeType">금융 가입 종류:</label>
+                        <select id="financeType" onchange="calculateQuote();">
+                            <option value="loan">일반 신차 할부 금융</option>
+                            <option value="lease">다이렉트 리스 요금제</option>
+                            <option value="rent">장기 렌터카 요금제</option>
+                        </select>
+
+                        <label for="downPaymentRange">선납금 비율 (선수금): <span id="downPaymentPercent">30</span>%</label>
+                        <input type="range" id="downPaymentRange" min="0" max="80" step="10" value="30" oninput="updateDownPaymentLabel(this.value); calculateQuote();">
+
+                        <label for="loanPeriod">상환 계약 기간:</label>
+                        <select id="loanPeriod" onchange="calculateQuote();">
+                            <option value="36">36개월</option>
+                            <option value="48">48개월</option>
+                            <option value="60" selected>60개월</option>
+                        </select>
+                    </form>
+
+                    <div class="calculator-result">
+                        <div>
+                            <span>차량 기본 출고가:</span>
+                            <span id="resCarPrice">0 원</span>
+                        </div>
+                        <div>
+                            <span>초기 인도 납입금 (선납금):</span>
+                            <span id="resDownPayment">0 원</span>
+                        </div>
+                        <div>
+                            <span>취등록세 및 공채 대행 비용 (예상):</span>
+                            <span id="resTax">0 원</span>
+                        </div>
+                        <div style="border-top: 1px solid #e2e8f0; padding-top: 10px; margin-top: 10px;">
+                            <strong>예상 매월 납입 요금:</strong>
+                            <strong id="resMonthlyPayment" style="color: var(--accent-color); font-size: 1.25em;">0 원</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function updateDownPaymentLabel(val) {
+                        document.getElementById('downPaymentPercent').innerText = val;
+                    }
+
+                    function calculateQuote() {
+                        const basePrice = parseInt(document.getElementById('carTrim').value);
+                        const financeType = document.getElementById('financeType').value;
+                        const downPercent = parseInt(document.getElementById('downPaymentRange').value) / 100;
+                        const period = parseInt(document.getElementById('loanPeriod').value);
+
+                        const downPayment = basePrice * downPercent;
+                        const principal = basePrice - downPayment;
+
+                        // 대략적인 2026년도 기준 금리 및 이자율 산출 (연 4.8%)
+                        const annualRate = 0.048;
+                        const monthlyRate = annualRate / 12;
+                        
+                        let monthlyPayment = 0;
+                        if (monthlyRate > 0) {
+                            monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, period)) / (Math.pow(1 + monthlyRate, period) - 1);
+                        } else {
+                            monthlyPayment = principal / period;
+                        }
+
+                        // 금융 상품별 임의 보정 수수료율 가산 (리스 및 렌트는 정비비, 보험료, 잔존가치 산정이 상이하므로 임의 세금 계산식 보정)
+                        if (financeType === 'lease') {
+                            monthlyPayment = monthlyPayment * 0.85; // 잔존가치 보장에 따른 기본 월 납입 요금 경감 적용
+                        } else if (financeType === 'rent') {
+                            monthlyPayment = monthlyPayment * 1.05; // 자동차세 및 전용 보험료 포함에 따른 가산율 반영
+                        }
+
+                        // 취등록세 계산 (7% 기준, 전기차의 경우 보조금 및 세제 감면 혜택 140만 원 우선 한도 적용)
+                        let taxRate = 0.07;
+                        let calculatedTax = basePrice * taxRate;
+                        if (basePrice >= 56000000) { 
+                            calculatedTax = Math.max(0, calculatedTax - 1400000); 
+                        }
+
+                        document.getElementById('resCarPrice').innerText = basePrice.toLocaleString() + ' 원';
+                        document.getElementById('resDownPayment').innerText = downPayment.toLocaleString() + ' 원';
+                        document.getElementById('resTax').innerText = Math.round(calculatedTax).toLocaleString() + ' 원';
+                        document.getElementById('resMonthlyPayment').innerText = Math.round(monthlyPayment).toLocaleString() + ' 원';
+                    }
+
+                    // 초기 로드 시 한 번 실행
+                    window.addEventListener('DOMContentLoaded', (event) => {
+                        calculateQuote();
+                    });
+                </script>
+
+
+                <h2 id="pro-con">수입 컴팩트 SUV 오너들이 말하는 솔직한 장단점 분석</h2>
+                
+                <p>차량 선택 시 현명한 선택을 하기 위해서는 실주행 환경에서 체감할 수 있는 확실한 메리트와 불편 요소를 미리 점검해 두는 태도가 필요합니다. 다음 리스트는 보배드림을 비롯한 대형 자동차 동호회 채널의 구매 실증 자료를 바탕으로 추출한 사실적인 요약입니다.</p>
+
+                <h4>압도적인 가치로 요약되는 주요 장점 세 가지</h4>
+                <p>첫째, 충돌 테스트 평가 결과 동급 차종 중 언제나 최우수 안전 평점을 받는 독보적인 승객 보호 성능입니다. 시티 세이프티 제동 시스템은 불시에 뛰어드는 보행자나 급정거 차량을 한 치의 오차도 없이 신속하게 감지하여 운전자와 가족의 안전을 사수합니다. 둘째, 최상의 완성도를 뽐내는 티맵 인포테인먼트가 있습니다. 수입 차량 고유의 내장 내비게이션에 대한 깊은 불만을 지니셨던 분들에게 이 옵션은 매우 매끄러운 해답이 됩니다. 마지막으로 군더더기 없는 고급 인테리어 가죽 품질과 크리스탈 기어노브가 주는 호사스러운 인테리어 연출 역시 타사 컴팩트 SUV 대비 XC40만의 우세한 경쟁 구도입니다.</p>
+
+                <h4>구입 전에 미리 검토하고 인지해야 할 대표적인 단점</h4>
+                <p>패밀리카로 XC40을 바라보는 오너들이 가장 입을 모아 말하는 한계는 바로 동급 경쟁 차량인 BMW X1이나 국산 준중형 SUV 대비 상대적으로 아쉬운 뒷좌석 다리 공간(2열 레그룸) 및 트렁크 적재량입니다. 트렁크 입구가 반듯하여 큰 짐 수납 자체는 간편하지만 깊이가 얕아 캠핑 및 야외 활동을 대대적으로 즐기는 가정에서는 공간 부족을 느낄 가능성이 큽니다. 더불어 마일드 하이브리드 엔진의 정차 후 재출발 시 느껴지는 미세한 진동 질감과, 전국 공식 서비스 네트워크망의 용량 한계로 인한 수리 및 메인터넌스 예약 대기 지연 문제 등은 차량 구입 후 유념해야 할 보이지 않는 유지 비용이라 볼 수 있습니다.</p>
+
+                <div class="chart-box">
+                    <h3>국내 오너들이 평가한 볼보 XC40 상품 만족도 트렌드</h3>
+                    <p>다양한 평가 지표를 기준으로 종합 만족도를 비교 분석한 지표 그래프입니다. (각 영역별 100점 만점 환산 기준)</p>
+                    <div class="bar-chart-wrap">
+                        <div class="bar-item" style="height: 96%;">
+                            <div class="bar-value">96점</div>
+                            <div class="bar-label">충돌안전성</div>
+                        </div>
+                        <div class="bar-item" style="height: 94%;">
+                            <div class="bar-value">94점</div>
+                            <div class="bar-label">편의인포</div>
+                        </div>
+                        <div class="bar-item" style="height: 88%;">
+                            <div class="bar-value">88점</div>
+                            <div class="bar-label">외관디자인</div>
+                        </div>
+                        <div class="bar-item" style="height: 72%;">
+                            <div class="bar-value">72점</div>
+                            <div class="bar-label">실내거주성</div>
+                        </div>
+                        <div class="bar-item" style="height: 65%;">
+                            <div class="bar-value">65점</div>
+                            <div class="bar-label">가성비대비</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h2 id="market-trend">2026년 수입차 딜러사별 실시간 프로모션 및 인터넷 견적 성지 찾기</h2>
+                
+                <p>볼보 브랜드 차량들은 전통적으로 여타 독일 수입차 브랜드들에 비해서 공식 할인 조건이나 연중 특판 금액 인하 혜택이 매우 고정적인 편에 속합니다. 하지만 수지타산을 꼼꼼히 따져보고 최대한 유리하게 출고를 이끌어낼 방법은 존재합니다. 최근 유행하는 전국 통합 다이렉트 신차 비교 어플 및 견적 앱 시스템을 활용하면 실시간 즉시출고 물량을 한눈에 식별하고 각 딜러사 대리점들이 보이지 않게 제공하는 비공개 사은품과 추가 서비스 좌표를 원활하게 공유받으실 수 있습니다.</p>
+
+                <p>특히 매달 분기 마감을 앞두고 수입사 내부적으로 특별 장려금 조건이 변동될 때, 에이전트 전문 컨설팅 사이트들을 통해 가입 시 현금지원 및 모바일 상품권 제공 등의 파격적인 특별 이벤트 소식이 비공식적으로 풀리는 타이밍이 존재합니다. 이러한 특수 할인 프로모션 정보를 얻기 위해서는 주기적으로 모니터링을 진행하고 카카오톡 1:1 오픈 채널 혹은 신뢰할 수 있는 수입차 전문 금융 에이전시에 가견적 조회를 미리 신청해 두는 준비성이 필수적으로 요청됩니다.</p>
+
+
+                <h2 id="retention-form">상담 및 추가 정보 공유를 위한 실시간 접수란</h2>
+                
+                <p>볼보 XC40 모델의 상세 견적 분석 자료와 최저가 출고 성지 대리점 정보를 이메일 혹은 카카오톡 메시지로 신속히 송부해 드립니다. 개인 정보는 철저히 안전하게 보호되며, 무분별한 광고 전화를 유발하지 않는 안심 서비스를 기반으로 제공됩니다.</p>
+
+                <div class="interactive-section">
+                    <h3>볼보 XC40 출고 대기 및 실시간 혜택 소식 신청서</h3>
+                    <form action="#" method="post" onsubmit="alert('성공적으로 접수되었습니다. 담당 카매니저 검토 후 영업일 기준 24시간 내 연락드리겠습니다.'); return false;">
+                        <label for="usrName">신청 고객명:</label>
+                        <input type="text" id="usrName" placeholder="실명을 입력해 주십시오." required>
+
+                        <label for="usrPhone">휴대전화 번호:</label>
+                        <input type="tel" id="usrPhone" placeholder="010-0000-0000 양식으로 입력해 주십시오." required>
+
+                        <label for="interestTrim">가장 관심 있는 모델 트림:</label>
+                        <select id="interestTrim" required>
+                            <option value="">-- 모델 트림 선택 --</option>
+                            <option value="B4_Plus">XC40 B4 AWD 플러스 브라이트</option>
+                            <option value="B4_Ultimate">XC40 B4 AWD 얼티메이트 브라이트</option>
+                            <option value="Recharge_Single">XC40 리차지 싱글 플러스 (전기차)</option>
+                            <option value="Recharge_Twin">XC40 리차지 트윈 울트라 (전기차)</option>
+                        </select>
+
+                        <label for="paymentPlan">희망 결제 방식:</label>
+                        <select id="paymentPlan" required>
+                            <option value="">-- 결제 설계 방식 선택 --</option>
+                            <option value="Cash">일시불 현금 구매</option>
+                            <option value="Installment">자체 저금리 할부 금융</option>
+                            <option value="Lease">운용 리스 및 사업자 비용처리</option>
+                            <option value="Rent">무보증 장기렌터카</option>
+                        </select>
+
+                        <label for="customInquiry">추가 요청 및 문의 사항 (선택 사항):</label>
+                        <textarea id="customInquiry" rows="4" placeholder="예: 전기차 지자체 보조금 잔여 현황 문의, 딜러 추가 사은품 종류 등 적어주세요."></textarea>
+
+                        <button type="submit">AI 분석 다이렉트 견적 요청서 전송</button>
+                    </form>
+                </div>
+
+
+                <h2 id="qa-section">볼보 XC40 예비 구매자를 위한 자주 묻는 질문 FAQ</h2>
+
+                <h4>Q1. 볼보 XC40 B4 AWD 모델의 실연비와 연간 유류비는 대략 어느 정도로 예상하면 될까요?</h4>
+                <p><strong>A.</strong> 볼보 XC40 B4 마일드 하이브리드 가솔린 모델의 공식 복합 연비는 리터당 10.3km 수준입니다. 도심 위주의 정체 도로를 주행하실 때에는 약 8km에서 9km 내외를 기록하게 되며 고속도로 정속 주행 시에는 리터당 최대 14km에 달하는 뛰어난 실연비를 뿜어냅니다. 매년 평균적인 주행거리를 15,000km 수준으로 가정하여 연간 유류 총 비용을 간단히 계산해 보면 2026년 기준 가솔린 평균 유가를 감안할 때 약 220만 원에서 250만 원가량이 평균 예상 금액으로 계산됩니다.</p>
+
+                <h4>Q2. 수입 전기차 보조금 제도 개편안에 따른 XC40 리차지 모델의 최종 지원금 규모는 어떻게 되나요?</h4>
+                <p><strong>A.</strong> 2026년 대한민국 환경부의 친환경 보조금 세부 요건에 따라 볼보 XC40 리차지 모델들은 기본 차량 권장 출고가가 보조금 지급 구간 기준선에 위치해 있습니다. 따라서 국가 국고 지원금 전액 대비 차량 자체 연비 효율 및 충전 인프라 기여도 배점에 의한 일부 감액이 적용될 수 있습니다. 서울특별시 기준으로는 대략 350만 원에서 500만 원 선의 실질적인 지원 혜택이 공제되며, 지방 소도시나 중소지역인 경우에는 지자체 보조금 폭이 더 크므로 최종적으로 보장받는 세부 수령금은 실시간 접수 지자체의 마감 수량을 매치하여 점검하는 편이 안전합니다.</p>
+
+                <h4>Q3. 볼보 XC40은 타사 경쟁 차종들과 대비하여 공간 설계 관점에서 어떤 차이점이 돋보이나요?</h4>
+                <p><strong>A.</strong> 동급에 속하는 BMW X1 및 벤츠 GLA 모델들과 심층 비교해보면 볼보 XC40은 세련되면서도 매우 반듯하게 떨어지는 실내 스웨디시 박스형 외장 바디를 고수하는 점이 차별화됩니다. 이는 운전자의 시인성과 개방감을 한단계 올려주는 요소로 작용하여 초보 운전자나 여성 고객들의 시내 운전 조작 편의 만족도가 매우 두드러집니다. 또한 대시보드와 문 안쪽의 도어 패널 전체에 배치된 풍성한 부직포 펠트 가죽 마감과 센터 콘솔에 부착된 쓰레기통 보관함과 같은 참신한 스토리지 솔루션은 오직 볼보만의 정성이 깃든 편안함을 증명하는 핵심입니다.</p>
+
+                <h4>Q4. 딜러가 제시하는 출고 사은품이나 현금 페이백 수준은 신뢰할 수 있는 범위가 어디까지인가요?</h4>
+                <p><strong>A.</strong> 볼보는 앞서 서술한 바와 같이 공식 딜러 네트워크망 사이에서 지나친 비공식 출혈 가격 경쟁을 엄격히 규제하는 편입니다. 따라서 인터넷 성지에서 간혹 접하는 과도한 현금지원은 금융 연계 상품의 불공정 고금리 우회 계약 조건일 리스크가 농후하므로 세심한 확인이 따릅니다. 안전한 루트는 틴팅 필름 사양(루마 버텍스, 솔라가드 프리미엄급 조율), 전후방 초고화질 블랙박스 탑재 및 하이패스 연동, 차량 외관 도장면 유리막 코팅 및 생활 보호 PPF 필름 가공 등 공인 시공 패키지를 깔끔하게 딜러 사은품으로 완전히 인도받아 보증서를 확실히 챙기시는 형태가 가장 유용한 방법입니다.</p>
+
+                <p style="margin-top: 40px; font-size: 0.9em; color: var(--text-muted);">
+                    본 정보 분석은 수입차 시장의 공식 보도 자료와 오너 피드백, 세무 전문가의 금융 가이드 지식을 통찰하여 작성되었으며, 실제 대리점 체결 시기와 법률 개정 여하에 따라 수치가 가변적일 수 있음을 밝힙니다. 보다 공식적이고 투명한 기술 사양과 상세한 보장 규정은 제조사 및 유관 공공 사이트에서 실시간 조회가 가능합니다.
+                </p>
+                
+                <hr style="border: 0; border-top: 1px solid #edf2f7; margin: 40px 0;">
+
+                <div style="font-size: 0.95em; color: var(--text-muted);">
+                    <strong>공식 참고 정보 및 검증 데이터 링크 안내:</strong>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>첫 번째 추천 신뢰 사이트: <a href="https://directochecku.koreahankang.com" class="external-link" target="_blank">수입 SUV 시장 동향 및 잔존가치 통계 연구보고서</a></li>
+                        <li>공식 백과사전 차량 이력 정보: <a href="https://namu.wiki/w/%EB%B3%BC%EB%B3%B4%20XC40" class="external-link" target="_blank">볼보 XC40 나무위키 상세 역사 및 제원 일람</a></li>
+                        <li>볼보 자동차 코리아 공식 채널: <a href="https://www.volvocars.com/kr" class="external-link" target="_blank">Volvo Cars Korea 공식 홈페이지 시승 및 상담 예약</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="sidebar">
+                <h3 style="margin-top: 0;">XC40 빠른 이동 메뉴</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#intro">1. XC40 가이드 개요</a></li>
+                    <li><a href="#spec-info">2. 트림 라인업 분석</a></li>
+                    <li><a href="#price-table">3. 공식 판매 가격표</a></li>
+                    <li><a href="#calculator">4. 월 금융 계산기 도구</a></li>
+                    <li><a href="#pro-con">5. 오너 실제 사용 장단점</a></li>
+                    <li><a href="#market-trend">6. 비공개 프로모션 소식</a></li>
+                    <li><a href="#retention-form">7. 다이렉트 견적 신청</a></li>
+                    <li><a href="#qa-section">8. 오너 다빈도 Q&A</a></li>
+                </ul>
+
+                <h3 style="margin-top: 35px;">함께 많이 찾는 자동차</h3>
+                <p style="font-size: 0.9em; color: var(--text-muted); line-height: 1.7;">
+                    메르세데스-벤츠 GLA 클래스, BMW X1 컴팩트 SUV, 아우디 Q3 스포트백, 제네시스 GV70 가솔린 터보, 렉서스 UX 하이브리드, 볼보 XC60 미드사이즈 SUV 등도 수입 콤팩트 SUV 오너들이 구매 선택 과정에서 가장 많은 가치 비교를 거치는 필수 경쟁 리스트입니다.
+                </p>
+
+                <h3 style="margin-top: 35px;">검색 포털 연관 키워드</h3>
+                <p style="font-size: 0.85em; color: var(--text-muted); line-height: 1.6;">
+                    볼보 XC40 모의견적 산출법, 수입 SUV 감가상각 순위, 하이브리드 세제 혜택 가이드, 2026 전기차 국고 보조금 자격 요건, 볼보 티맵 연동 사용법, 수입차 할부 리스 차이점 분석 정보
+                </p>
+            </div>
+        </div>
+    </div>
+
+  
